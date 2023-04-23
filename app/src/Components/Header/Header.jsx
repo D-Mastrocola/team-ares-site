@@ -1,7 +1,7 @@
 let Header = () => {
     return (
         <header>
-            <img src='./assets/ares/header-logo.avif'/>
+            <img id='header-logo' src='./assets/images/header-logo.avif'/>
             <ul>
                 <li><a>Home</a></li>
                 <li><a>About</a></li>
@@ -10,3 +10,5 @@ let Header = () => {
         </header>
     );
 }
+
+export default Header;
