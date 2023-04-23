@@ -7,7 +7,7 @@
     --color-6: rgb(246, 197, 103);
     --color-7: rgb(121, 202, 216);
     --color-8: rgb(240, 240, 240);
-    --primary-font: "Helvetica Neue Medium Extended";
+    --primary-font: 'Kanit', sans-serif;
     --secondary-font: "Lato";
     --tertiary-font: "Source Sans Pro";
     overflow-x: hidden;
@@ -15,12 +15,12 @@
 
 header {
   height: 80px;
-  width: 100vw;
+  width: 100%;
   background-color: var(--primary-color);
   display:flex;
   justify-content: space-between;
-  color: white;
-  font-family: var(--tertiary-font);
+  font-family: var(--primary-font);
+  font-size: 1em;
   position: fixed;
 }
 #header-logo {
@@ -42,9 +42,8 @@ header ul li:hover {
   cursor: pointer;
 }
 
-main {
+#landing {
   width: 100vw;
-  height: 100vh;
   padding: 0;
   margin: 0;
   background-color: var(--color-5);
