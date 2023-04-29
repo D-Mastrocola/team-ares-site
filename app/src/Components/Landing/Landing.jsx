@@ -12,6 +12,7 @@ let Landing = () => {
         ></video>
       </section>
       <main>
+        <div></div>
         <h1>Team Ares</h1>
         <p>
           Welcome to Team Ares! We are a gaming organization based in
