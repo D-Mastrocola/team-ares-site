@@ -10,7 +10,24 @@
     --primary-font: 'Kanit', sans-serif;
     --secondary-font: "Lato";
     --tertiary-font: "Source Sans Pro";
-    overflow-x: hidden;
+    
+}
+body {
+  overflow-x: hidden;
+}
+#animation-div {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--primary-color);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#animation-div-img{
+  height: 150px;
+  opacity: 1;
 }
 
 header {
@@ -22,6 +39,7 @@ header {
   font-family: var(--primary-font);
   font-size: 1em;
   position: fixed;
+  color: #fff;
 }
 #header-logo {
   height: 100%;
@@ -47,4 +65,11 @@ header ul li:hover {
   padding: 0;
   margin: 0;
   background-color: var(--color-5);
+}
+
+main {
+  display: flex;
+}
+#main-founders-text {
+  width: 60%;
 }
