@@ -25,6 +25,7 @@ class Animation extends Component {
                 if(progress === 100) {
                     //allow scroll
                     document.getElementsByTagName('body')[0].style.overflowY = "scroll";
+                    document.getElementById("animation-div").style.zIndex = '-1';
                 }
               }
           })

@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Animation from "../Animation/Animation";
+import Header from "../Header/Header";
 
 class Landing extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Landing extends Component {
         <section id="landing">
           <video
             width={"100%"}
+            height={"100%"}
             playsInline
             autoPlay
             loop
@@ -19,6 +21,7 @@ class Landing extends Component {
             id="landing-video"
           ></video>
         </section>
+        <Header />
         <main>
           <div>
             <h1>Team Ares</h1>

@@ -20,7 +20,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: var(--primary-color);
-  z-index: 1;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,8 +38,9 @@ header {
   justify-content: space-between;
   font-family: var(--primary-font);
   font-size: 1em;
-  position: fixed;
+  position: sticky;
   color: #fff;
+  z-index: 1;
 }
 #header-logo {
   height: 100%;
@@ -62,9 +63,18 @@ header ul li:hover {
 
 #landing {
   width: 100vw;
+  height: 70vh;
   padding: 0;
   margin: 0;
   background-color: var(--color-5);
+  position: relative;
+}
+#landing video {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
 }
 
 main {
