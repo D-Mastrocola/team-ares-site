@@ -23,7 +23,7 @@ class Landing extends Component {
         </section>
         <Header />
         <main>
-          <div>
+          <div id='main-founders-text'>
             <h1>Team Ares</h1>
             <p>
               Welcome to Team Ares! We are a gaming organization based in
@@ -50,6 +50,7 @@ class Landing extends Component {
               their goals. Thank you for visiting our website and we look
               forward to connecting with you!
             </p>
+            <a href='./about' className="btn">Learn More</a>
           </div>
           <div id="main-founders-visual">
             <img

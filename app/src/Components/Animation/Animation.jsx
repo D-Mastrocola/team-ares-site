@@ -5,7 +5,11 @@ class Animation extends Component {
   constructor(props) {
     super(props);
   }
-  animate() {
+  animate(enabled) {
+    if(!enabled)  {
+        document.getElementById('animation-div').style.opacity = '0';
+        return false;
+    }
     let page = this.props.page;
     if(page == 'landing') {
         anime.timeline({})
@@ -32,7 +36,7 @@ class Animation extends Component {
     }
   }
   componentDidMount() {
-    this.animate();
+    this.animate(false);
   }
   render() {
     return (
