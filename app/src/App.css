@@ -94,8 +94,8 @@ main {
 #main-founders-text a{
   background-color: var(--primary-color);
   color: #fff;
-  margin-left: auto;
-  margin-right: 0;
+  margin-left: 0;
+  margin-right: auto;
 }
 #main-founders-visual {
   width: 40%;
