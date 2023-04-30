@@ -27,9 +27,10 @@
       //Auto plays the landing video to get around chrome disable
       function toggleMute() {
         var video = document.getElementById("landing-video");
+        if(!video) return null;
 
         if (video.muted) {
-          video.muted = false;
+          video.muted = true;
         } else {
           debugger;
           video.muted = true;

@@ -61,6 +61,11 @@ header ul li {
 }
 header ul li:hover {
   cursor: pointer;
+  transform: scale(1.1) rotate(3deg);
+}
+header ul li a {
+  text-decoration: none;
+  color: #fff;
 }
 
 #landing {
@@ -86,7 +91,7 @@ main {
 
 }
 #main-founders-text {
-  width: 60%;
+  width: 50%;
   padding: 1em 2em;
   display: flex;
   flex-direction: column;
@@ -98,6 +103,6 @@ main {
   margin-right: auto;
 }
 #main-founders-visual {
-  width: 40%;
+  width: 50%;
   background-color: var(--background-color);
 }
