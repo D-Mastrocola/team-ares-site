@@ -47,7 +47,7 @@ header {
 #header-logo {
   height: 100%;
 }
-header ul {
+header div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,16 +56,16 @@ header ul {
   margin: 0;
   padding: 0;
 }
-header ul li {
+.header-button {
   margin: 0 2em;
+  color: #fff;
+  outline: none;
+  border: none;
+  background: none;
 }
-header ul li:hover {
+.header-button:hover {
   cursor: pointer;
   transform: scale(1.1) rotate(3deg);
-}
-header ul li a {
-  text-decoration: none;
-  color: #fff;
 }
 
 #landing {
