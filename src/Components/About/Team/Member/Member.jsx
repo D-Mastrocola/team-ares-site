@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 
 let Member = (props) => {
   return (
-    <Grid item xs={3}>
+    <Grid item xs={3} className="member-card">
       <Card>
         <div className="team-card-socials"></div>
         <CardMedia

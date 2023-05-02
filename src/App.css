@@ -104,7 +104,11 @@ main {
 }
 #team {
   width: 55%;
+  min-height: calc(100vh - 80px);
   padding: 1em;
   box-sizing: border-box;
   background-color: var(--background-color);
+}
+.member-card {
+  opacity: 0;
 }
