@@ -41,6 +41,7 @@ class Animation extends Component {
         .add({
           targets: "#animation-div",
           height: 0,
+          delay: 100,
           duration: 500,
           easing: 'easeOutQuad'
         })
