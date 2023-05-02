@@ -87,11 +87,11 @@ header div {
 main {
   display: flex;
   box-sizing: border-box;
-  width: 100vw;
+  width: 100%;
 
 }
 #main-founders-text {
-  width: 50%;
+  width: 45%;
   padding: 1em 2em;
   display: flex;
   flex-direction: column;
@@ -102,7 +102,9 @@ main {
   margin-left: 0;
   margin-right: auto;
 }
-#main-founders-visual {
-  width: 50%;
+#team {
+  width: 55%;
+  padding: 1em;
+  box-sizing: border-box;
   background-color: var(--background-color);
 }

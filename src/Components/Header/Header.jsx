@@ -7,6 +7,7 @@ let Header = () => {
             <div>
                 <HeaderButton text='Home' link='/'/>
                 <HeaderButton text='About' link='/about'/>
+                <HeaderButton text='Contact' link='/contact'/>
                 <HeaderButton text='Shop' link='/shop'/>
                 
             </div>
