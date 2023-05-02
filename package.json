@@ -1,6 +1,7 @@
 {
   "name": "app",
   "version": "0.1.0",
+  "homepage": "https://main--strong-gecko-6d1738.netlify.app",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.8",
