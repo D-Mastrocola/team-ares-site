@@ -1,30 +1,34 @@
-import { Card, Grid } from "@mui/material";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+import {
+  Card,
+  Grid,
+  IconButton,
+  ImageListItem,
+  ImageListItemBar,
+} from "@mui/material";
 import Typography from "@mui/material/Typography";
+import InfoIcon from "@mui/icons-material/Info";
 
 let Member = (props) => {
   return (
-    <Grid item xs={3} className="member-card">
-      <Card>
-        <div className="team-card-socials"></div>
-        <CardMedia
-          component="img"
-          alt={props.name}
-          height="140"
-          image={"/assets/images/team/" + props.pfp}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="body1">
-            {props.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {props.position}
-          </Typography>
-        </CardContent>
-      </Card>
-    </Grid>
+    <ImageListItem className='member-card' key={props.pfp} cols={1} rows={1}>
+      <img
+        alt={props.name}
+        className="team-pfp"
+        src={"/assets/images/team/" + props.pfp }
+      />
+      <ImageListItemBar
+        title={props.name}
+        subtitle={props.position}
+        actionIcon={
+          <IconButton
+            sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+            aria-label={`info about ${props.name}`}
+          >
+            <InfoIcon />
+          </IconButton>
+        }
+      />
+    </ImageListItem>
   );
 };
 export default Member;

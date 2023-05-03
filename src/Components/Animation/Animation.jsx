@@ -40,9 +40,9 @@ class Animation extends Component {
         .timeline({})
         .add({
           targets: "#animation-div",
-          height: 0,
+          opacity: 0,
           delay: 100,
-          duration: 500,
+          duration: 400,
           easing: 'easeOutQuad'
         })
       }

@@ -1,6 +1,8 @@
 import { Component } from "react";
 import Member from "./Member/Member";
-import { Grid } from "@mui/material";
+import { Grid, ImageList } from "@mui/material";
+import ListSubheader from "@mui/material/ListSubheader";
+import { ImageListItem } from "@mui/material";
 import anime from "animejs";
 
 class Team extends Component {
@@ -11,18 +13,20 @@ class Team extends Component {
     anime.timeline({}).add({
       targets: ".member-card",
       opacity: 1,
-      easing: 'linear',
+      easing: "linear",
       duration: 1200,
-      delay: (el, i) => i * 100,
+      delay: (el, i) => i * 100 + 200,
     });
   }
   componentDidMount() {
     this.animate();
   }
   render() {
+    let rowHeight = (window.innerHeight - 80) / 3 - 10;
+    console.log(rowHeight)
     return (
       <div id="team">
-        <Grid container spacing={1}>
+        <ImageList cols={4} rowHeight={rowHeight}>
           <Member
             name="Garrett Leake"
             position="Owner"
@@ -65,7 +69,7 @@ class Team extends Component {
             position="Management"
             pfp="arturo-georg.webp"
           />
-        </Grid>
+        </ImageList>
       </div>
     );
   }

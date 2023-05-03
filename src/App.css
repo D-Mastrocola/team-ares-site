@@ -1,16 +1,15 @@
 :root {
-    --primary-color: rgb(206, 34, 34);
-    --secondary-color: rgb(63, 115, 203);
-    --foreground-color: rgb(55, 126, 98);
-    --background-color: rgb(204, 204, 204);
-    --color-5: rgb(17, 18, 19);
-    --color-6: rgb(246, 197, 103);
-    --color-7: rgb(121, 202, 216);
-    --color-8: rgb(240, 240, 240);
-    --primary-font: 'Kanit', sans-serif;
-    --secondary-font: "Lato";
-    --tertiary-font: "Source Sans Pro";
-    
+  --primary-color: rgb(206, 34, 34);
+  --secondary-color: rgb(63, 115, 203);
+  --foreground-color: rgb(55, 126, 98);
+  --background-color: rgb(204, 204, 204);
+  --color-5: rgb(17, 18, 19);
+  --color-6: rgb(246, 197, 103);
+  --color-7: rgb(121, 202, 216);
+  --color-8: rgb(240, 240, 240);
+  --primary-font: "Kanit", sans-serif;
+  --secondary-font: "Lato";
+  --tertiary-font: "Source Sans Pro";
 }
 body {
   overflow-x: hidden;
@@ -25,7 +24,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-#animation-div-img{
+#animation-div-img {
   height: 150px;
   opacity: 1;
 }
@@ -34,14 +33,14 @@ header {
   height: 80px;
   width: 100%;
   background-color: var(--primary-color);
-  display:flex;
+  display: flex;
   justify-content: space-between;
   font-family: var(--primary-font);
   font-size: 1em;
   position: sticky;
   color: #fff;
   z-index: 1;
-  padding: .1em 1.5em;
+  padding: 0.1em 1.5em;
   box-sizing: border-box;
 }
 #header-logo {
@@ -77,7 +76,6 @@ header div {
   position: relative;
 }
 #landing video {
-  object-fit: contain;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -88,27 +86,35 @@ main {
   display: flex;
   box-sizing: border-box;
   width: 100%;
-
+  overflow: hidden;
+  background-color: #fff;
 }
 #main-founders-text {
-  width: 45%;
+  width: 40%;
   padding: 1em 2em;
   display: flex;
   flex-direction: column;
 }
-#main-founders-text a{
+#main-founders-text a {
   background-color: var(--primary-color);
   color: #fff;
   margin-left: 0;
   margin-right: auto;
 }
 #team {
-  width: 55%;
-  min-height: calc(100vh - 80px);
+  width: 60%;
+  height: calc(100vh - 80px);
   padding: 1em;
   box-sizing: border-box;
-  background-color: var(--background-color);
+  background-color: var(--color-5);
 }
 .member-card {
   opacity: 0;
+}
+.team-pfp {
+  height: 100% !important;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 600px) {
 }
