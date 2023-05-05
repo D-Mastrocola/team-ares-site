@@ -116,5 +116,24 @@ main {
   object-fit: cover;
 }
 
+#about-main {
+  background-color: var(--color-5);
+  width: 100vw;
+  height: calc(100vh - 80px);
+  justify-content: center;
+  align-items: center;
+}
+
+#about-main form{
+  background-color: #fff;
+  padding: 2em;
+  width: 40%;
+  border-radius: 5px;
+  box-shadow: 0 3px 15px 5px rgba(255,255,255, 0.1);
+}
+#contact-submit {
+  background-color: var(--primary-color);
+  color: #fff;
+margin: 0 1ch;}
 @media only screen and (max-width: 600px) {
 }
