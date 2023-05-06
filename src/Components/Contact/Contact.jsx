@@ -7,12 +7,16 @@ import {
   InputAdornment,
   FormHelperText,
 } from "@mui/material";
+
+import { Email, Send, Phone } from "@mui/icons-material";
+import Animation from "../Animation/Animation";
 import Header from "../Header/Header";
 import Typography from "@mui/material/Typography";
 
 let Contact = () => {
   return (
     <>
+      <Animation page="about" />
       <Header />
       <Box
         id="about-main"
@@ -20,9 +24,16 @@ let Contact = () => {
         sx={{ display: "flex", flexWrap: "wrap" }}
       >
         <form>
-          <Typography variant="h3" component="h2">
-            Contact
-          </Typography>
+          <div id='form-title'>
+            <Typography variant="h4" component="h2">
+              Contact
+            </Typography>
+            <Typography variant="subtitle2">
+              <Phone fontSize="small" /> (505)-305-4417
+              <br />
+              <Email fontSize="small" /> contact@teamares.gg
+            </Typography>
+          </div>
           <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
             <TextField id="contact-first-name" label="First Name" />
           </FormControl>
@@ -34,7 +45,9 @@ let Contact = () => {
             <OutlinedInput
               id="contact-email"
               startAdornment={
-                <InputAdornment position="start">Email Icon</InputAdornment>
+                <InputAdornment position="start">
+                  <Email fontSize="small" />
+                </InputAdornment>
               }
               label="Email"
             />
@@ -47,8 +60,12 @@ let Contact = () => {
               rows={4}
             />
           </FormControl>
-          <button className='btn' id='contact-submit'>Send</button>
+          <button className="btn" id="contact-submit">
+            <Send fontSize="small" />
+            Send
+          </button>
         </form>
+        <div id="contact-text"></div>
       </Box>
     </>
   );

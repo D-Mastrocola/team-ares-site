@@ -129,7 +129,12 @@ main {
   padding: 2em;
   width: 40%;
   border-radius: 5px;
-  box-shadow: 0 3px 15px 5px rgba(255,255,255, 0.1);
+  box-shadow: 0 3px 15px 5px rgba(255, 199, 126, 0.1);
+}
+#form-title {
+  display: flex;
+  justify-content: space-between;
+  width: 50ch;
 }
 #contact-submit {
   background-color: var(--primary-color);

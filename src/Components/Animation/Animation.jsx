@@ -36,16 +36,22 @@ class Animation extends Component {
         });
     }
     if (page == "about") {
-      anime
-        .timeline({})
-        .add({
-          targets: "#animation-div",
-          opacity: 0,
-          delay: 100,
-          duration: 400,
-          easing: 'easeOutQuad'
-        })
-      }
+      anime.timeline({}).add({
+        targets: "#animation-div",
+        opacity: 0,
+        delay: 100,
+        duration: 400,
+        easing: "easeOutQuad",
+        update: function (anim) {
+          let progress = Math.round(anim.progress);
+          if (progress === 100) {
+            //allow scroll
+            document.getElementsByTagName("body")[0].style.overflowY = "scroll";
+            document.getElementById("animation-div").style.zIndex = "-1";
+          }
+        },
+      });
+    }
   }
   componentDidMount() {
     this.animate(true);
