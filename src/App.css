@@ -124,21 +124,22 @@ main {
   align-items: center;
 }
 
-#about-main form{
+#about-main form {
   background-color: #fff;
   padding: 2em;
   width: 40%;
-  border-radius: 5px;
-  box-shadow: 0 3px 15px 5px rgba(255, 199, 126, 0.1);
+  height: calc(100vh - 80px);
 }
 #form-title {
   display: flex;
   justify-content: space-between;
-  width: 50ch;
+  width: calc(100% - 2ch);
+  align-items: center;
 }
 #contact-submit {
   background-color: var(--primary-color);
   color: #fff;
-margin: 0 1ch;}
+  margin: 0 1ch;
+}
 @media only screen and (max-width: 600px) {
 }

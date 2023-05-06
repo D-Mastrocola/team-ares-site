@@ -25,7 +25,7 @@ let Contact = () => {
       >
         <form>
           <div id='form-title'>
-            <Typography variant="h4" component="h2">
+            <Typography variant="h3" component="h2">
               Contact
             </Typography>
             <Typography variant="subtitle2">
@@ -65,7 +65,9 @@ let Contact = () => {
             Send
           </button>
         </form>
-        <div id="contact-text"></div>
+        <div id="contact-text">
+          <cavas id='contact-canvas'></cavas>
+        </div>
       </Box>
     </>
   );
