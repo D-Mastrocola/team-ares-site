@@ -7,13 +7,51 @@ import {
   InputAdornment,
   FormHelperText,
 } from "@mui/material";
+import * as THREE from "three";
 
 import { Email, Send, Phone } from "@mui/icons-material";
 import Animation from "../Animation/Animation";
 import Header from "../Header/Header";
 import Typography from "@mui/material/Typography";
+import React, { useState, useEffect } from "react";
 
 let Contact = () => {
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
+  let renderer;
+
+  const geometry = new THREE.BoxGeometry(1, 1, 1);
+  const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+
+  //Create a PointLight and turn on shadows for the light
+  const light = new THREE.PointLight(0xffffff, 1, 1000);
+  light.position.set(20, 20, 10);
+  const light2 = new THREE.PointLight(0xffffff, 0.4, 100);
+  light2.position.set(-20, 10, -40);
+  scene.add(light);
+  scene.add(light2);
+
+  camera.position.z = 5;
+  let animate = () => {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+  };
+
+  useEffect(() => {
+    let canvas = document.getElementById("contact-canvas");
+    renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
+
+    animate();
+  });
   return (
     <>
       <Animation page="about" />
@@ -24,7 +62,7 @@ let Contact = () => {
         sx={{ display: "flex", flexWrap: "wrap" }}
       >
         <form>
-          <div id='form-title'>
+          <div id="form-title">
             <Typography variant="h3" component="h2">
               Contact
             </Typography>
@@ -66,7 +104,7 @@ let Contact = () => {
           </button>
         </form>
         <div id="contact-text">
-          <cavas id='contact-canvas'></cavas>
+          <canvas id="contact-canvas"></canvas>
         </div>
       </Box>
     </>
