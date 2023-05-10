@@ -127,8 +127,15 @@ main {
 #about-main form {
   background-color: #fff;
   padding: 2em;
-  width: 40%;
-  height: calc(100vh - 80px);
+  width: 30%;
+  height: 500px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+#about-main form {
+  cursor: grab;
 }
 #form-title {
   display: flex;
@@ -141,9 +148,8 @@ main {
   color: #fff;
   margin: 0 1ch;
 }
-#contact-text {
-  width: 60%;
-  height: 100%;
+#contact-canvas {
+  position: absolute;
 }
 @media only screen and (max-width: 600px) {
 }

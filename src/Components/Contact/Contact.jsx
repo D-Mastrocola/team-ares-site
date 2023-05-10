@@ -56,6 +56,7 @@ let Contact = () => {
     <>
       <Animation page="about" />
       <Header />
+      <canvas id="contact-canvas"></canvas>
       <Box
         id="about-main"
         component="main"
@@ -72,13 +73,16 @@ let Contact = () => {
               <Email fontSize="small" /> contact@teamares.gg
             </Typography>
           </div>
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-            <TextField id="contact-first-name" label="First Name" />
-          </FormControl>
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-            <TextField id="contact-last-name" label="Last Name" />
-          </FormControl>
-          <FormControl fullWidth sx={{ m: 1, width: "52ch" }}>
+          <div>
+            <FormControl sx={{ m: "2%", width: "46%" }} variant="outlined">
+              <TextField id="contact-first-name" label="First Name" />
+            </FormControl>
+            <FormControl sx={{ m: "2%", width: "46%" }} variant="outlined">
+              <TextField id="contact-last-name" label="Last Name" />
+            </FormControl>
+          </div>
+
+          <FormControl fullWidth sx={{ m: "2%", width: "96%" }}>
             <InputLabel htmlFor="contact-email">Email</InputLabel>
             <OutlinedInput
               id="contact-email"
@@ -90,12 +94,12 @@ let Contact = () => {
               label="Email"
             />
           </FormControl>
-          <FormControl fullWidth sx={{ m: 1, width: "52ch" }}>
+          <FormControl fullWidth sx={{ m: "2%", width: "96%" }}>
             <TextField
               id="contact-message"
               label="Message"
               multiline
-              rows={4}
+              rows={6}
             />
           </FormControl>
           <button className="btn" id="contact-submit">
@@ -103,9 +107,6 @@ let Contact = () => {
             Send
           </button>
         </form>
-        <div id="contact-text">
-          <canvas id="contact-canvas"></canvas>
-        </div>
       </Box>
     </>
   );
