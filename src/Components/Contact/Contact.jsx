@@ -25,8 +25,10 @@ let Contact = () => {
   );
   let renderer;
 
+  let headerSize = 80;
+
   const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+  const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
   const cube = new THREE.Mesh(geometry, material);
   scene.add(cube);
 
@@ -34,13 +36,39 @@ let Contact = () => {
   const light = new THREE.PointLight(0xffffff, 1, 1000);
   light.position.set(20, 20, 10);
   const light2 = new THREE.PointLight(0xffffff, 0.4, 100);
-  light2.position.set(-20, 10, -40);
+  light2.position.set(-3, -2, 5);
+  const light3 = new THREE.PointLight(0xffffff, 0.4, 100);
+  light3.position.set(-3, 5, -5);
   scene.add(light);
   scene.add(light2);
+  scene.add(light3);
 
-  camera.position.z = 5;
+  camera.position.z = 1.5;
+
+  let resizeRendererToDisplaySize = (renderer) => {
+
+    const canvas = renderer.domElement;
+    const pixelRatio = window.devicePixelRatio;
+    const width = (window.innerWidth * pixelRatio) | 0;
+    const height = (window.innerHeight * pixelRatio - headerSize) | 0;
+    const needResize = canvas.width !== width || canvas.height !== height;
+    console.log(canvas.width)
+    if (needResize) {
+      renderer.setSize(width, height, false);
+    }
+    
+    return needResize;
+  };
+
   let animate = () => {
     requestAnimationFrame(animate);
+
+    if (resizeRendererToDisplaySize(renderer)) {
+      const canvas = renderer.domElement;
+      camera.aspect = canvas.clientWidth / (canvas.clientHeight - headerSize);
+      camera.updateProjectionMatrix();
+    }
+
     renderer.render(scene, camera);
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
@@ -49,6 +77,10 @@ let Contact = () => {
   useEffect(() => {
     let canvas = document.getElementById("contact-canvas");
     renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
+    renderer.setSize(window.innerWidth, window.innerHeight - headerSize);
+
+    camera.aspect = canvas.clientWidth / (canvas.clientHeight - headerSize); //80px is the header size;
+    camera.updateProjectionMatrix();
 
     animate();
   });
