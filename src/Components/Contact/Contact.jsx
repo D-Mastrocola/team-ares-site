@@ -14,6 +14,12 @@ import Animation from "../Animation/Animation";
 import Header from "../Header/Header";
 import Typography from "@mui/material/Typography";
 import React, { useState, useEffect } from "react";
+import anime from "animejs";
+
+const colorPalette = { 
+  primaryColor: 0xce2222,
+  secondaryColor: 0x222324,
+};
 
 let Contact = () => {
   const scene = new THREE.Scene();
@@ -45,36 +51,38 @@ let Contact = () => {
 
   camera.position.z = 1.5;
 
-  let resizeRendererToDisplaySize = (renderer) => {
+  scene.background = new THREE.Color(colorPalette.secondaryColor);
 
+  let resizeRendererToDisplaySize = (renderer) => {
     const canvas = renderer.domElement;
-    const pixelRatio = window.devicePixelRatio;
-    const width = (window.innerWidth * pixelRatio) | 0;
-    const height = (window.innerHeight * pixelRatio - headerSize) | 0;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
     const needResize = canvas.width !== width || canvas.height !== height;
-    console.log(canvas.width)
     if (needResize) {
       renderer.setSize(width, height, false);
     }
-    
     return needResize;
   };
 
   let animate = () => {
-    requestAnimationFrame(animate);
-
     if (resizeRendererToDisplaySize(renderer)) {
       const canvas = renderer.domElement;
-      camera.aspect = canvas.clientWidth / (canvas.clientHeight - headerSize);
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
       camera.updateProjectionMatrix();
     }
 
     renderer.render(scene, camera);
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
+
+    requestAnimationFrame(animate);
   };
 
   useEffect(() => {
+    let bodyEl = (document.querySelector("body").style.overflowY = "hidden");
+    let contactForm = document.getElementById("message-form");
+
+    contactForm.addEventListener("submit", messageSentAnimation);
     let canvas = document.getElementById("contact-canvas");
     renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
     renderer.setSize(window.innerWidth, window.innerHeight - headerSize);
@@ -84,17 +92,38 @@ let Contact = () => {
 
     animate();
   });
+
+  let messageSentAnimation = (e) => {
+    e.preventDefault();
+    let formElements = document.getElementById('message-form').children;
+
+    
+    
+    anime.timeline({})
+    .add({
+      targets: formElements,
+      opacity: 0,
+      easing: 'linear',
+      duration: 1200,
+    })
+    .add({
+      targets: "#message-form",
+      backgroundColor: 'rgb(206, 34, 34)',
+      easing: 'linear',
+      duration: 1000,
+    });
+  };
   return (
     <>
       <Animation page="about" />
       <Header />
       <canvas id="contact-canvas"></canvas>
       <Box
-        id="about-main"
+        id="contact-main"
         component="main"
         sx={{ display: "flex", flexWrap: "wrap" }}
       >
-        <form>
+        <form id="message-form">
           <div id="form-title">
             <Typography variant="h3" component="h2">
               Contact
