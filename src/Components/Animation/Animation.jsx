@@ -47,10 +47,32 @@ class Animation extends Component {
           if (progress === 100) {
             //allow scroll
             document.getElementsByTagName("body")[0].style.overflowY = "scroll";
-            document.getElementById("animation-div").style.zIndex = "-1";
+            document.getElementById("animation-div").style.zIndex = "-5";
           }
         },
       });
+    }
+    if (page == "contact") {
+      anime.timeline({}).add({
+        targets: "#animation-div",
+        opacity: 0,
+        delay: 200,
+        duration: 1000,
+        easing: "easeOutQuad",
+        update: function (anim) {
+          let progress = Math.round(anim.progress);
+          if (progress === 100) {
+            //allow scroll
+            document.getElementsByTagName("body")[0].style.overflowY = "hidden";
+            document.getElementById("animation-div").style.zIndex = "-5";
+            console.log('test')
+          }
+        },
+      }).add({
+        targets: "#animation-div",
+        height: 0,
+        duration: 100
+      })
     }
   }
   componentDidMount() {

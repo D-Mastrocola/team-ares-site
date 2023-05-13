@@ -1,22 +1,13 @@
-import {
-  Box,
-  TextField,
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  InputAdornment,
-  FormHelperText,
-} from "@mui/material";
+import { Box } from "@mui/material";
 import * as THREE from "three";
-
-import { Email, Send, Phone } from "@mui/icons-material";
 import Animation from "../Animation/Animation";
 import Header from "../Header/Header";
-import Typography from "@mui/material/Typography";
 import React, { useState, useEffect } from "react";
 import anime from "animejs";
+import ContactForm from "./ContactForm/ContactForm";
+import LoadingAnimation from "../Animation/Components/LoadingAnimation";
 
-const colorPalette = { 
+const colorPalette = {
   primaryColor: 0xce2222,
   secondaryColor: 0x222324,
 };
@@ -78,11 +69,65 @@ let Contact = () => {
     requestAnimationFrame(animate);
   };
 
+  let messageSentAnimation = (e) => {
+    e.preventDefault();
+    let formElements = document.getElementById("message-form").children;
+
+    anime
+      .timeline({})
+      .add({
+        targets: formElements,
+        opacity: 0,
+        easing: "linear",
+        duration: 1200,
+      })
+      .add({
+        targets: "#message-form",
+        backgroundColor: "rgb(206, 34, 34)",
+        easing: "linear",
+        duration: 1000,
+        update: function (anim) {
+          let progress = Math.round(anim.progress);
+          if (progress === 100) {
+            document.getElementById("lds-ring").style.zIndex = "10";
+          }
+        },
+      })
+      .add({
+        targets: "#lds-ring",
+        opacity: 1,
+        easing: "linear",
+        duration: 1000,
+      })
+      .add({
+        targets: "#lds-ring",
+        opacity: 0,
+        delay: 3000,
+        easing: "linear",
+        duration: 500,
+      })
+      .add({
+        targets: "#message-form",
+        backgroundColor: "rgb(255, 255, 255)",
+        easing: "linear",
+        duration: 500,
+        update: function (anim) {
+          let progress = Math.round(anim.progress);
+          if (progress === 100) {
+            document.getElementById("lds-ring").style.zIndex = "0";
+          }
+        },
+      })
+      .add({
+        targets: formElements,
+        opacity: 1,
+        easing: "linear",
+        duration: 500,
+      });
+  };
+
   useEffect(() => {
     let bodyEl = (document.querySelector("body").style.overflowY = "hidden");
-    let contactForm = document.getElementById("message-form");
-
-    contactForm.addEventListener("submit", messageSentAnimation);
     let canvas = document.getElementById("contact-canvas");
     renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
     renderer.setSize(window.innerWidth, window.innerHeight - headerSize);
@@ -90,32 +135,16 @@ let Contact = () => {
     camera.aspect = canvas.clientWidth / (canvas.clientHeight - headerSize); //80px is the header size;
     camera.updateProjectionMatrix();
 
+    let contactForm = document.getElementById("message-form");
+    if (contactForm)
+      contactForm.addEventListener("submit", messageSentAnimation);
+
     animate();
   });
 
-  let messageSentAnimation = (e) => {
-    e.preventDefault();
-    let formElements = document.getElementById('message-form').children;
-
-    
-    
-    anime.timeline({})
-    .add({
-      targets: formElements,
-      opacity: 0,
-      easing: 'linear',
-      duration: 1200,
-    })
-    .add({
-      targets: "#message-form",
-      backgroundColor: 'rgb(206, 34, 34)',
-      easing: 'linear',
-      duration: 1000,
-    });
-  };
   return (
     <>
-      <Animation page="about" />
+      <Animation page="contact" />
       <Header />
       <canvas id="contact-canvas"></canvas>
       <Box
@@ -123,51 +152,8 @@ let Contact = () => {
         component="main"
         sx={{ display: "flex", flexWrap: "wrap" }}
       >
-        <form id="message-form">
-          <div id="form-title">
-            <Typography variant="h3" component="h2">
-              Contact
-            </Typography>
-            <Typography variant="subtitle2">
-              <Phone fontSize="small" /> (505)-305-4417
-              <br />
-              <Email fontSize="small" /> contact@teamares.gg
-            </Typography>
-          </div>
-          <div>
-            <FormControl sx={{ m: "2%", width: "46%" }} variant="outlined">
-              <TextField id="contact-first-name" label="First Name" />
-            </FormControl>
-            <FormControl sx={{ m: "2%", width: "46%" }} variant="outlined">
-              <TextField id="contact-last-name" label="Last Name" />
-            </FormControl>
-          </div>
-
-          <FormControl fullWidth sx={{ m: "2%", width: "96%" }}>
-            <InputLabel htmlFor="contact-email">Email</InputLabel>
-            <OutlinedInput
-              id="contact-email"
-              startAdornment={
-                <InputAdornment position="start">
-                  <Email fontSize="small" />
-                </InputAdornment>
-              }
-              label="Email"
-            />
-          </FormControl>
-          <FormControl fullWidth sx={{ m: "2%", width: "96%" }}>
-            <TextField
-              id="contact-message"
-              label="Message"
-              multiline
-              rows={6}
-            />
-          </FormControl>
-          <button className="btn" id="contact-submit">
-            <Send fontSize="small" />
-            Send
-          </button>
-        </form>
+        <ContactForm />
+        <LoadingAnimation />
       </Box>
     </>
   );
