@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Animation from "../Animation/Animation";
 import Header from "../Header/Header";
+import Feature from "./Feature/Feature";
 
 class Landing extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Landing extends Component {
           ></video>
         </section>
         <Header />
+        <Feature />
       </>
     );
   }
