@@ -90,6 +90,8 @@ main {
   display: flex;
   box-sizing: border-box;
   width: 100%;
+  flex-wrap: wrap;
+  text-align: center;
   overflow: hidden;
   background-color: #fff;
   height: calc(100vh -80px);
@@ -156,6 +158,10 @@ main {
   z-index: 3;
   width: 100vw !important;
   height: calc(100vh - 80px) !important;
+}
+.feature-card {
+  width: 50%;
+  height: 400px;
 }
 @media only screen and (max-width: 600px) {
 }
