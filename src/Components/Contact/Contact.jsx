@@ -6,13 +6,16 @@ import React, { useState, useEffect } from "react";
 import anime from "animejs";
 import ContactForm from "./ContactForm/ContactForm";
 import LoadingAnimation from "../Animation/Components/LoadingAnimation";
-
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 const colorPalette = {
   primaryColor: 0xce2222,
   secondaryColor: 0x222324,
 };
 
 let Contact = () => {
+  let model;
+  let headerSize = 80;
+  let renderer;
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
     75,
@@ -20,15 +23,6 @@ let Contact = () => {
     0.1,
     1000
   );
-  let renderer;
-
-  let headerSize = 80;
-
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
-
   //Create a PointLight and turn on shadows for the light
   const light = new THREE.PointLight(0xffffff, 1, 1000);
   light.position.set(20, 20, 10);
@@ -43,6 +37,28 @@ let Contact = () => {
   camera.position.z = 1.5;
 
   scene.background = new THREE.Color(colorPalette.secondaryColor);
+
+  const loader = new GLTFLoader();
+
+  loader.load(
+    "./assets/logo.glb",
+    function (gltf) {
+      model = gltf;
+      model.scene.position.z = -5;
+      scene.add(model.scene);
+      console.log("sdcscsa");
+    },
+    undefined,
+    function (error) {
+      console.log("error loading model");
+      console.error(error);
+    }
+  );
+
+  /*const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);*/
 
   let resizeRendererToDisplaySize = (renderer) => {
     const canvas = renderer.domElement;
@@ -63,8 +79,13 @@ let Contact = () => {
     }
 
     renderer.render(scene, camera);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    /*cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;*/
+    if (model) {
+      let m = model.scene;
+      m.rotation.x += 0.01;
+      m.rotation.y += 0.01;
+    }
 
     requestAnimationFrame(animate);
   };
