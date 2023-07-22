@@ -24,7 +24,7 @@ class Landing extends Component {
           ></video>
         </section>
         <Header />
-        <Feature />
+    
       </>
     );
   }

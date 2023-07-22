@@ -171,8 +171,8 @@ main {
 .feature-card-image {
   width: 100%;
   height: 100%;
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  /*filter: blur(8px);
+  -webkit-filter: blur(8px);*/
 }
 .feature-card-text {
   position: absolute;

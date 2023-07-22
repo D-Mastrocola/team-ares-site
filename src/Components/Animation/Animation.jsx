@@ -65,7 +65,7 @@ class Animation extends Component {
             //allow scroll
             document.getElementsByTagName("body")[0].style.overflowY = "hidden";
             document.getElementById("animation-div").style.zIndex = "-5";
-            console.log('test')
+            console.log('test');
           }
         },
       }).add({
