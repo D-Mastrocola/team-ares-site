@@ -1,0 +1,236 @@
+:root {
+  --primary-color: rgb(206, 34, 34);
+  --secondary-color: rgb(63, 115, 203);
+  --foreground-color: rgb(55, 126, 98);
+  --background-color: rgb(204, 204, 204);
+  --color-5: rgb(17, 18, 19);
+  --color-6: rgb(246, 197, 103);
+  --color-7: rgb(121, 202, 216);
+  --color-8: rgb(240, 240, 240);
+  --primary-font: "Kanit", sans-serif;
+  --secondary-font: "Lato";
+  --tertiary-font: "Source Sans Pro";
+}
+.App {
+  margin: 0;
+  padding: 0;
+}
+body {
+  overflow-x: hidden;
+}
+#animation-div {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--primary-color);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#animation-div-img {
+  height: 150px;
+  opacity: 1;
+}
+
+header {
+  height: 80px;
+  width: 100%;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--primary-font);
+  font-size: 1em;
+  position: sticky;
+  color: #fff;
+  z-index: 1;
+  padding: 0.1em 1.5em;
+  box-sizing: border-box;
+}
+#header-logo {
+  height: 100%;
+}
+header div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.header-button {
+  margin: 0 2em;
+  color: #fff;
+  outline: none;
+  border: none;
+  background: none;
+}
+.header-button:hover {
+  cursor: pointer;
+  transform: scale(1.1) rotate(3deg);
+}
+
+#landing {
+  width: 100vw;
+  height: 70vh;
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-5);
+  position: relative;
+}
+#landing video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
+main {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  flex-wrap: wrap;
+  text-align: center;
+  overflow: hidden;
+  background-color: #fff;
+  height: calc(100vh -80px);
+}
+#main-founders-text {
+  width: 40%;
+  padding: 1em 2em;
+  display: flex;
+  flex-direction: column;
+}
+#main-founders-text a {
+  background-color: var(--primary-color);
+  color: #fff;
+  margin-left: 0;
+  margin-right: auto;
+}
+#team {
+  width: 60%;
+  height: calc(100vh - 80px);
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: var(--color-5);
+}
+.member-card {
+  opacity: 0;
+}
+.team-pfp {
+  height: 100% !important;
+  object-fit: cover;
+}
+
+#contact-main {
+  z-index: 0;
+  width: 35vw;
+  height: calc(100vh - 80px);
+  position: absolute;
+  top: 80px;
+  left: 0;
+}
+
+#contact-main form {
+  background-color: #fff;
+  padding: 2em;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+#contact-main form {
+  z-index: 10;
+}
+#form-title {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 2ch);
+  align-items: center;
+}
+#contact-submit {
+  background-color: var(--primary-color);
+  color: #fff;
+  margin: 0 1ch;
+}
+#contact-canvas {
+  z-index: 3;
+  width: 100vw !important;
+  height: calc(100vh - 80px) !important;
+}
+.feature-card {
+  position: relative;
+  width: 50%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.feature-card-image {
+  width: 100%;
+  height: 100%;
+  /*filter: blur(8px);
+  -webkit-filter: blur(8px);*/
+}
+.feature-card-text {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-width: 600px) {
+}
+
+/* Loading Animation*/
+#lds-ring {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  left: 0;
+}
+.lds-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  justify-content: center;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
