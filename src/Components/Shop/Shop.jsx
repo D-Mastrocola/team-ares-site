@@ -1,12 +1,15 @@
 import Header from "../Header/Header";
 import Animation from "../Animation/Animation";
 import {createStorefrontClient} from '@shopify/hydrogen-react';
+import {json} from '@shopify/remix-oxygen';
 
 const storefront = createStorefrontClient({
-  publicStorefrontToken: process.env.PUBLIC_STOREFRONT_API_TOKEN,
-  storeDomain: `https://${process.env.PUBLIC_STORE_DOMAIN}`,
-  storefrontApiVersion: process.env.PUBLIC_STOREFRONT_API_VERSION || "2023-01",
+  publicStorefrontToken: process.env.REACT_APP_PUBLIC_STOREFRONT_API_TOKEN,
+  storeDomain: `https://${process.env.REACT_APP_PUBLIC_STORE_DOMAIN}`,
+  storefrontApiVersion: process.env.REACT_APP_PUBLIC_STOREFRONT_API_VERSION || "2023-01",
 });
+
+
 
 function loader({ context }) {
   const PRODUCTS_QUERY = `#graphql
@@ -22,11 +25,11 @@ function loader({ context }) {
     }
   `;
   const { products } = context.storefront.query(PRODUCTS_QUERY);
-  return JSON.parse({ products });
+  return json({products});
 }
 
 let Shop = () => {
-  console.log(loader);
+  console.log(loader(storefront));
   return (
     <>
       <Animation page="about" />
